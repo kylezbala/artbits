@@ -11,47 +11,52 @@
 |
 */
 
-Route::get('/home', 'UserController@index');
+Route::get('home', 'UserController@index');
 
-Route::get('/events', 'EventController@index');
-Route::get('/events/create', 'EventController@create');
-Route::post('/events', 'EventController@store');
-Route::get('/events/{id}', 'EventController@edit');
-Route::put('/events/{id}/save', 'EventController@update');
+Route::post('order', 'CheckoutController@order');
+Route::post('checkout', 'CheckoutController@checkout');
+Route::post('processing', 'CheckoutController@processing');
+Route::post('confirmed', 'CheckoutController@confirmed');
 
-Route::post('/commissions/accept', 'CommissionController@accept');
-Route::get('/commissions', 'CommissionController@index');
-Route::get('/commissions/create', 'CommissionController@create');
-Route::post('/commissions', 'CommissionController@store');
-Route::get('/commissions/{id}', 'CommissionController@edit');
-Route::put('/commissions/{id}/save', 'CommissionController@update');
+Route::get('events', 'EventController@index');
+Route::get('events/create', 'EventController@create');
+Route::post('events', 'EventController@store');
+Route::get('events/{id}', 'EventController@edit');
+Route::put('events/{id}/save', 'EventController@update');
 
-Route::get('/register', function () {
+Route::post('commissions/accept', 'CommissionController@accept');
+Route::get('commissions', 'CommissionController@index');
+Route::get('commissions/create', 'CommissionController@create');
+Route::post('commissions', 'CommissionController@store');
+Route::get('commissions/{id}', 'CommissionController@edit');
+Route::put('commissions/{id}/save', 'CommissionController@update');
+
+Route::get('register', function () {
     return view('register');
 });
-Route::get('/display/{id}', function ($id) {
+Route::get('display/{id}', function ($id) {
 
     $art = \App\Art::find($id);
     return view('show', ['art' => $art]);
 });
-Route::get('/profile', function () {
+Route::get('profile', function () {
 
     $art = \App\Art::all()->where('user_id','=', session('user')['id']);
 
     return view('profile', ['art' => $art]);
 });
-Route::post('/register', 'UserController@store');
+Route::post('register', 'UserController@store');
 
-Route::get('/login', 'LoginController@index');
-Route::post('/login', 'LoginController@store');
+Route::get('login', 'LoginController@index');
+Route::post('login', 'LoginController@store');
 
-Route::get('/upload', 'ArtController@create');
-Route::post('/upload', 'ArtController@store');
+Route::get('upload', 'ArtController@create');
+Route::post('upload', 'ArtController@store');
 
-Route::get('/logout', function () {
+Route::get('logout', function () {
     session()->flush();
     return redirect('/home');
 });
 
-Route::get('/admin', 'AdminController@index');
-Route::post('/change_status', 'AdminController@changestatus');
+Route::get('admin', 'AdminController@index');
+Route::post('change_status', 'AdminController@changestatus');

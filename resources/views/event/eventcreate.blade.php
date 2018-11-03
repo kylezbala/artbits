@@ -13,6 +13,19 @@
         <br>
         <div class="main main-raised">
         <div class="container">
+
+            @if($errors->any())
+                <div class="alert alert-danger">
+                    @foreach($errors->all() as $error)
+
+                        {{$error}}<br>
+
+
+                    @endforeach
+                </div>
+
+            @endif
+
             <br>
             Event Name<input type="text"
                             name="eventName" class="form-control"></td></tr><br>

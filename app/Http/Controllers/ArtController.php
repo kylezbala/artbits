@@ -37,6 +37,12 @@ class ArtController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'Art' => 'required|mimes:png,jpg,jpeg',
+            'artTitle' => 'required|max:100|min:5',
+            'artDescription' => 'required|max:500'
+        ]);
+
         $art = $request->all();
 
         $file1 = $request->file('Art')->getClientOriginalName();

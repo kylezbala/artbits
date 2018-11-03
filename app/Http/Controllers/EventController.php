@@ -32,12 +32,22 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
+
+            $request->validate([
+                'eventName' => 'required|max:100|min:5',
+                'eventDescription' => 'required|max:100|min:5',
+                'eventVenue' => 'required|max:100|min:5'
+            ]);
+
+
         $event = $request->all();
         $event['User_id'] = session('user')['id'];
         $event['status'] = 2;
         $event['personIncharge'] = 'manager';
         Event::create($event);
         return redirect('events');
+
+
 
     }
 

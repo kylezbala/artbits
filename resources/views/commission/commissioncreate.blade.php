@@ -14,6 +14,21 @@
         <br>
         <div class="main main-raised">
             <div class="container">
+
+                {{--VALIDATION DISPLAY--}}
+                @if($errors->any())
+                    <div class="alert alert-danger">
+                        @foreach($errors->all() as $error)
+
+                            {{$error}}<br>
+
+
+                        @endforeach
+                    </div>
+
+                @endif
+                {{--VALIDATION DISPLAY--}}
+
                 <br>
                 Art Request Price<input type="text"
                                         name="setPrice" class="form-control"></td></tr><br>

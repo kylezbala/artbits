@@ -8,6 +8,21 @@
         <br>
         <div class="main main-raised">
         <div class="container">
+
+            {{--VALIDATION DISPLAY--}}
+            @if($errors->any())
+                <div class="alert alert-danger">
+                    @foreach($errors->all() as $error)
+
+                        {{$error}}<br>
+
+
+                    @endforeach
+                </div>
+
+            @endif
+            {{--VALIDATION DISPLAY--}}
+
             <br>
             Last Name<input type="text"
                             name="Lastname" class="form-control"></td></tr><br>

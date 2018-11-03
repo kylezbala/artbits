@@ -50,6 +50,12 @@ class CommissionController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'setPrice' => 'required|numeric',
+            'artTitle' => 'required|max:100|min:5',
+            'artDesc' => 'required|max:500'
+        ]);
+
         $commission = $request->all();
         $commission['User_id'] = session('user')['id'];
         Commission::create($commission);

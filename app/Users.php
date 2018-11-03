@@ -12,4 +12,7 @@ class Users extends Model
       'Lastname', 'Firstname', 'Middlename', 'Username', 'Password', 'Gender', 'Birthdate', 'Address', 'MobileNo', 'Email'
     ];
     public $timestamps = false;
+    public function art(){
+        return $this->hasOne('\App\Art');
+    }
 }
