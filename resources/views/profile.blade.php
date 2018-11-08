@@ -16,7 +16,9 @@
     <div class="main main-raised bg-dark">
         <div class="container">
             <div class="row">
-
+                @if($art->count() < 1)
+                    <div class="alert alert-danger p-5">There are currently no art entries.</div>
+                @else
                     @foreach($art as $a)
                         <div class="col-4 mt-5">
                             <div class="card hovereffect" style="width: 20rem; height: 18rem">
@@ -34,6 +36,7 @@
                     @endforeach
 
             </div>
+            @endif
         </div>
     </div>
 

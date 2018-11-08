@@ -2,6 +2,7 @@
 
 @section('content')
     @include('layout.navbar2')
+
     <br>
     <br>
     <br>
@@ -13,6 +14,16 @@
                     <div class="card shadow">
                         <div class="card-body">
                             You have successfully purchased the item!
+
+                            You may now deposit your payment in our Bank Account:
+                            <br>
+                            BPI:
+                            <br>
+                            Account Name:
+                            ArtBits
+                            <br>
+                            Account Number:
+                            2779 1405 15
 
                         </div>
                         <div class="card-footer">

@@ -1,7 +1,7 @@
 <nav class="navbar bg-dark fixed-top navbar-expand-lg" id="sectionsNav">
     <div class="container">
         <div class="navbar-translate">
-            <a class="navbar-brand profile-photo" href="{{URL::to('/home')}}"><img src="./assets/img/cutebits.png">A R T  B I T S</a>
+            <a class="navbar-brand profile-photo" href="{{URL::to('/home')}}"><img src="{{asset('assets/img/cutebits.png')}}">A R T  B I T S</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="navbar-toggler-icon"></span>

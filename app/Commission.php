@@ -9,7 +9,7 @@ class Commission extends Model
     protected $table = 'commission';
 
     protected $fillable = [
-        'setPrice', 'artTitle', 'artDesc', 'requestee', 'User_id'
+        'setPrice', 'artTitle', 'artDesc', 'requestee', 'User_id', 'status'
     ];
 
 }

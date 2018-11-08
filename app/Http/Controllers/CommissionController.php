@@ -57,6 +57,7 @@ class CommissionController extends Controller
         ]);
 
         $commission = $request->all();
+        $commission['status'] = 1;
         $commission['User_id'] = session('user')['id'];
         Commission::create($commission);
         return redirect('commissions');
@@ -101,7 +102,7 @@ class CommissionController extends Controller
 
         $commission->save();
 
-        return redirect('/home');
+        return redirect('/commissions');
     }
 
     /**

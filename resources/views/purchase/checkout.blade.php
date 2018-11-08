@@ -28,7 +28,7 @@
                     <div class="card shadow">
                         <div class="card-body">
                             <h3 class="card-title">Checkout</h3>
-                            <form action="{{action('CheckoutController@processing')}}" method="post">
+                            <form action="{{action('CheckoutController@confirmed')}}" method="post">
                                 @csrf
                                 <input type="hidden" name="art_id" value="{{$art->id}}">
                                 <input type="hidden" name="user_id" value="{{session('user')['id']}}">

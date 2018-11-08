@@ -185,7 +185,9 @@
         }
     });
 
-</script>
+   </script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
+
 
 <style>
     .hovereffect {
@@ -275,6 +277,8 @@
         -webkit-transition-delay:.2s;
         transition-delay:.2s;
     }
+
+
 </style>
 </body>
 

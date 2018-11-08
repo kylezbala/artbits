@@ -13,6 +13,10 @@
 
 Route::get('home', 'UserController@index');
 
+Route::get('message/{id}/{receiver}/{sender}', 'MessageController@index');
+Route::post('message/send', 'MessageController@send');
+
+
 Route::post('order', 'CheckoutController@order');
 Route::post('checkout', 'CheckoutController@checkout');
 Route::post('processing', 'CheckoutController@processing');

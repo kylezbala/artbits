@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Art;
 use App\Purchase;
-use App\User;
 use App\Users;
 use Illuminate\Http\Request;
 

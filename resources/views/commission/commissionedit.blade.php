@@ -4,7 +4,7 @@
     <br>
     <br>
     <div class="main main-raised">
-        <form action="{{url('/commission/'.$commissions->id.'/save')}}" method="post">
+        <form action="{{url('commissions/'.$commissions->id.'/save')}}" method="post">
             @method('PUT')
             @csrf
             <div class="container">

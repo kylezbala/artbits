@@ -20,6 +20,7 @@
                     <div class="card-title">
                         <p>Title: <b>{{$art->artTitle}}</b></p>
                         <p>Art by: <b>{{$art->user->Firstname}}&nbsp;{{$art->user->Lastname}}</b></p>
+                        <p>Art Price: <b>{{$art->price}}</b></p>
                         <p>Date Posted: <b>{{$art->created_at}}</b></p>
                         @if(\App\Purchase::all()->where('art_id', $art->id)->count() <= 0)
                             <div class="card-footer pull-right">
@@ -36,7 +37,6 @@
                         @endif
                     </div>
                     <br>
-                    <div id="sliderRegular" class="slider"></div>
                 </div>
             </div>
         </div>

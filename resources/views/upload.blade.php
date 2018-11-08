@@ -32,12 +32,19 @@
                         <textarea class="form-control" type="text" cols="50" rows="10"
                                   name="artDescription"></textarea></td></tr>
 
+
+                        <h4 style="font-family: Verdana;">Art Price</h4>
+                        <textarea class="form-control" type="text" class="form-control-file"
+                                  name="price"></textarea></td></tr>
+
+
                         <h4 style="font-family: Verdana;">Art Category</h4><select class="form-control"
                                                                                    name="category_id">
                             @foreach($categories as $category)
                                 <option value="{{$category->id}}">{{$category->Name}}</option>
                             @endforeach
                         </select></td></tr>
+
 
 
                         <br/>
