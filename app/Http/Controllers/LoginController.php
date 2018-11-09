@@ -22,6 +22,11 @@ class LoginController extends Controller
     public function store(Request $request)
     {
 
+        $request->validate([
+            'Username' => 'required',
+            'Password' => 'required'
+        ]);
+
         $check = Users::all()->where('Username', '=', $request['Username'])->where('Password', '=', $request['Password'])->first();
 
         if ($check->role == 3) {

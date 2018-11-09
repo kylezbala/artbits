@@ -16,6 +16,8 @@
     <link href="{{asset('assets/css/material-kit.css')}}" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{asset('assets/demo/demo.css')}}" rel="stylesheet" />
+    <link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"/>
+    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
 </head>
 
 
@@ -73,6 +75,13 @@
 <script src="{{asset('assets/js/plugins/jquery.sharrre.js')}}" type="text/javascript"></script>
 <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
 <script src="{{asset('assets/js/material-kit.js')}}" type="text/javascript"></script>
+<script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+<script>
+    $(document).ready( function () {
+        $('table').DataTable();
+    } );
+</script>
 <script>
     $(document).ready(function() {
         //init DateTimePickers
@@ -186,8 +195,8 @@
     });
 
    </script>
-<script src='https://www.google.com/recaptcha/api.js'></script>
 
+<script src='https://www.google.com/recaptcha/api.js'></script>
 
 <style>
     .hovereffect {

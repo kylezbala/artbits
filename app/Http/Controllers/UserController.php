@@ -20,7 +20,6 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-
         $request->validate([
             'Lastname' => 'required|string|max:50',
             'Firstname' => 'required|string|max:50',
@@ -30,8 +29,9 @@ class UserController extends Controller
             'Address' => 'required|min:5|max:500',
             'MobileNo' => 'required||min:11|max:13',
             'Email' => 'required|email',
-            'Terms&Conditions' => 'required',
-            'recaptcha' => 'required|recaptcha'
+            'Terms&Conditions' => '',
+            'g-recaptcha-response' => 'required'
+
         ]);
 
         $user = $request->except('_token');

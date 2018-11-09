@@ -1,5 +1,6 @@
 @extends('layout.master')
 @section('content')
+
     <form action="{{URL::to('/login')}}" method="post">
         @csrf
         <div class="page-header header-filter"
@@ -7,8 +8,20 @@
 
 
             <div class="container col-4">
+
                 <div class="card card-login">
                     <form class="form" method="post" action="{{url('login')}}">
+                        @if($errors->any())
+                            <div class="alert alert-danger">
+                                @foreach($errors->all() as $error)
+
+                                    {{$error}}<br>
+
+
+                                @endforeach
+                            </div>
+
+                        @endif
 
                         <div class="card-header card-header-primary text-center">
                             <h4 class="card-title">Login</h4>

@@ -37,6 +37,9 @@
                         <textarea class="form-control" type="text" class="form-control-file"
                                   name="price"></textarea></td></tr>
 
+                        <h4 style="font-family: Verdana;">Art Bid Price</h4>
+                        <textarea class="form-control" type="text" class="form-control-file"
+                                  name="openPrice"></textarea></td></tr>
 
                         <h4 style="font-family: Verdana;">Art Category</h4><select class="form-control"
                                                                                    name="category_id">

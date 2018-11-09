@@ -16,10 +16,10 @@ class AdminController extends Controller
     public function index()
     {
         if (session('admin')) {
-            $events = Event::all();
-            $users = Users::all();
+            $events = Event::get();
+            $users = Users::get();
             return view('admin.dashboard', compact(['events', 'users']));
-        }else{
+        } else {
             return redirect('/home');
         }
 
@@ -29,17 +29,26 @@ class AdminController extends Controller
     {
         if ($request->type == 'event') {
             $event = Event::find($request->id);
+            if ($event->status == 2) {
+                $event->status = 1;
+            } elseif ($event->status == 1) {
+                $event->status = 0;
+            }
+            $event->save();
+            return redirect('admin#events');
         } else if ($request->type == 'user') {
-            $event = Users::find($request->id);
+            $user = Users::find($request->id);
+            if ($user->status == 0) {
+                $user->status = 1;
+            } elseif ($user->status == 1) {
+                $user->status = 0;
+            }
+            $user->save();
+            return redirect('admin#users');
         }
 
-        if ($event->status == 2) {
-            $event->status = 1;
-        } elseif($event->status == 1) {
-            $event->status = 0;
-        }
 
-        $event->save();
+
         return redirect()->back();
     }
 

@@ -16,6 +16,10 @@ Route::get('home', 'UserController@index');
 Route::get('message/{id}/{receiver}/{sender}', 'MessageController@index');
 Route::post('message/send', 'MessageController@send');
 
+Route::get('auction', 'AuctionController@index');
+Route::get('auction/create', 'AuctionController@create');
+Route::post('auction/create', 'AuctionController@store');
+
 
 Route::post('order', 'CheckoutController@order');
 Route::post('checkout', 'CheckoutController@checkout');

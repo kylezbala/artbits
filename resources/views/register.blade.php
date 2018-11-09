@@ -2,12 +2,14 @@
 @section('content')
     <br>
     <form action="{{URL::to('/register')}}" method="post">
+
         @csrf
         <br>
         <br>
         <br>
         <div class="main main-raised">
         <div class="container">
+
 
             {{--VALIDATION DISPLAY--}}
             @if($errors->any())
@@ -66,7 +68,8 @@
 
             <input type="hidden" name="_token" value="{{ Session::token() }}">
 
-            <input type="Submit" name="submit" value="Create Account" class="col-lg-offset-5 btn btn-primary";/>
+            <input type="Submit" name="submit" value="Create Account" class="col-lg-offset-5 btn btn-success";/>
+            <a href="{{url('/home')}}" class="btn btn-danger">Cancel</a>
             <br>
             <a class="nav-link" data-toggle="modal" data-target="#exampleModalLong">
                 VIEW TERMS AND CONDITIONS
@@ -79,9 +82,10 @@
                 </label>
                 <br>
             </div>
-            <div name="recaptcha" class="g-recaptcha" data-sitekey="6LeidXkUAAAAACk6W2J87G4yLAFXL_CbLf7uSNfL"></div>
+            <div class="g-recaptcha" data-sitekey="6LeidXkUAAAAACk6W2J87G4yLAFXL_CbLf7uSNfL"></div>
 
         </div>
+
         </div>
 
     </form>

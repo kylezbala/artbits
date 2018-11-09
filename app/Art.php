@@ -12,6 +12,9 @@ class Art extends Model
         'Art', 'artTitle','user_id', 'artDescription', 'category_id', 'price'
     ];
 
+
+
+
     public function user(){
         return $this->belongsTo('\App\Users');
     }
