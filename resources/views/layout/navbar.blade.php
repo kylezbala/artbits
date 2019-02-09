@@ -121,7 +121,8 @@
      id="sectionsNav">
     <div class="container">
         <div class="navbar-translate">
-            <a class="navbar-brand profile-photo" href="{{URL::to('/home')}}"><img src="{{asset('assets/img/cutebits.png')}}">A R T
+            <a class="navbar-brand profile-photo" href="{{URL::to('/home')}}"><img
+                        src="{{asset('assets/img/cutebits.png')}}">A R T
                 B I T S</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -135,9 +136,14 @@
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
                 @if(session('admin'))
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{URL::to('/auditlog')}}">AUDITLOG</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{URL::to('/logout')}}">LOGOUT</a>
                     </li>
+
 
                     @if(session('admin') == 'eventofficer')
                         <li class="nav-item">
@@ -152,6 +158,10 @@
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link" href="{{URL::to('/upload')}}">UPLOAD <span
+                                        class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{URL::to('/auction')}}">Auctions <span
                                         class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">

@@ -14,7 +14,7 @@
                             <div class="alert alert-danger">
                                 @foreach($errors->all() as $error)
 
-                                            {{$error}}<br>
+                                    {{$error}}<br>
 
 
                                 @endforeach
@@ -23,31 +23,32 @@
                         @endif
                         {{--VALIDATION DISPLAY--}}
                         <h4 style="font-family: Verdana;">Art</h4><input type="file" class="form-control-file"
-                                                                         name="Art" id="Art"></td></tr>
+                                                                         name="Art" id="Art">
 
                         <h4 style="font-family: Verdana;">Art Title</h4><input type="text" class="form-control"
-                                                                               name="artTitle"></td></tr>
+                                                                               name="artTitle">
 
                         <h4 style="font-family: Verdana;">Art Description</h4>
                         <textarea class="form-control" type="text" cols="50" rows="10"
-                                  name="artDescription"></textarea></td></tr>
+                                  name="artDescription"></textarea>
 
 
                         <h4 style="font-family: Verdana;">Art Price</h4>
                         <textarea class="form-control" type="text" class="form-control-file"
-                                  name="price"></textarea></td></tr>
+                                  name="price"></textarea>
+                        @convert($var)
 
                         <h4 style="font-family: Verdana;">Art Bid Price</h4>
                         <textarea class="form-control" type="text" class="form-control-file"
-                                  name="openPrice"></textarea></td></tr>
+                                  name="openPrice"></textarea>
 
-                        <h4 style="font-family: Verdana;">Art Category</h4><select class="form-control"
-                                                                                   name="category_id">
+                        <h4 style="font-family: Verdana;">Art Category</h4>
+                        <select class="form-control"
+                                name="category_id">
                             @foreach($categories as $category)
-                                <option value="{{$category->id}}">{{$category->Name}}</option>
+                                <option value="{{$category->id}}">{{$category->name}}</option>
                             @endforeach
-                        </select></td></tr>
-
+                        </select>
 
 
                         <br/>

@@ -10,9 +10,9 @@ class Art extends Model
 
     protected $fillable = [
         'Art', 'artTitle','user_id', 'artDescription', 'category_id', 'price'
+
+
     ];
-
-
 
 
     public function user(){

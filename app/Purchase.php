@@ -12,5 +12,6 @@ class Purchase extends Model
         'id', 'user_id', 'art_id', 'purchaseDate'
     ];
 
-    public $timestamps = false;
+    Const CREATED_AT = 'purchaseDate';
+    Const UPDATED_AT =  null;
 }

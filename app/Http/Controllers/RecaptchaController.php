@@ -2,7 +2,6 @@
 
 namespace App\Validators;
 
-use GuzzleHttp\Client;
 use Symfony\Component\HttpKernel\Client;
 
 class recaptcha

@@ -11,12 +11,18 @@
 |
 */
 
+use App\Auditlog;
+
 Route::get('home', 'UserController@index');
+
+Route::get('verify/{code}', 'UserController@verify');
+Route::get('send/{email}', 'UserController@send');
+
 
 Route::get('message/{id}/{receiver}/{sender}', 'MessageController@index');
 Route::post('message/send', 'MessageController@send');
 
-Route::get('auction', 'AuctionController@index');
+Route::get('auction', 'AuctionController@create');
 Route::get('auction/create', 'AuctionController@create');
 Route::post('auction/create', 'AuctionController@store');
 
@@ -24,7 +30,7 @@ Route::post('auction/create', 'AuctionController@store');
 Route::post('order', 'CheckoutController@order');
 Route::post('checkout', 'CheckoutController@checkout');
 Route::post('processing', 'CheckoutController@processing');
-Route::post('confirmed', 'CheckoutController@confirmed');
+Route::get('confirmed', 'CheckoutController@confirmed');
 
 Route::get('events', 'EventController@index');
 Route::get('events/create', 'EventController@create');
@@ -62,9 +68,23 @@ Route::get('upload', 'ArtController@create');
 Route::post('upload', 'ArtController@store');
 
 Route::get('logout', function () {
+    //Audit log
+    $audit = new Auditlog();
+    $audit->user_id = session('user')['id'];
+    $audit->activity = 'User has logged Out';
+    $audit->save();
+
     session()->flush();
     return redirect('/home');
 });
 
 Route::get('admin', 'AdminController@index');
+Route::get('auditlog', function (){
+//Audit log
+    $auditlog = new auditlog();
+    $log = $auditlog->orderBy('id', 'DESC')->get();
+   return view('admin.auditlog', compact('log'));
+
+});
 Route::post('change_status', 'AdminController@changestatus');
+

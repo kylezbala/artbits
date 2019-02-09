@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Art;
+use App\Auditlog;
 use App\Category;
 use Illuminate\Http\Request;
 
@@ -26,6 +27,7 @@ class ArtController extends Controller
     public function create()
     {
         $categories = Category::all();
+
         return view('upload', ['categories' => $categories]);
     }
 
@@ -53,6 +55,13 @@ class ArtController extends Controller
 
 
         Art::create($art);
+        //Audit log
+        $audit = new Auditlog();
+        $audit->user_id = session('user')['id'];
+        $audit->activity = 'User has added an art';
+        $audit->save();
+
+
         return redirect('/home');
     }
 

@@ -11,4 +11,5 @@ class Admin extends Model
     protected $fillable = [
         'Lastname', 'Firstname', 'Middlename','Email','Password','UserName','Mobilenumber','CreatedAt'
     ];
+
 }

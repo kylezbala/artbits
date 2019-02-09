@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Auditlog;
 use App\Event;
 use Illuminate\Http\Request;
 
@@ -41,10 +42,17 @@ class EventController extends Controller
 
 
         $event = $request->all();
-        $event['User_id'] = session('user')['id'];
+        $event['user_id'] = session('user')['id'];
         $event['status'] = 2;
+        $event['type'] = 1;
         $event['personIncharge'] = 'manager';
         Event::create($event);
+
+        //Audit log
+        $audit = new Auditlog();
+        $audit->user_id = session('user')['id'];
+        $audit->activity = 'User has created an event';
+        $audit->save();
         return redirect('events');
 
 
@@ -87,8 +95,16 @@ class EventController extends Controller
         $event->eventName = $request['eventName'];
         $event->eventDescription = $request['eventDescription'];
         $event->eventVenue = $request['eventVenue'];
-        $event->eventDate = $request['eventDate'];
+        $event->eventStart = $request['eventStart'];
+        $event->eventEnd = $request['eventEnd'];
+
         $event->save();
+
+        //Audit log
+        $audit = new Auditlog();
+        $audit->user_id = session('user')['id'];
+        $audit->activity = 'User has updated an event';
+        $audit->save();
 
         return redirect('/home');
     }

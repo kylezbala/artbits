@@ -36,7 +36,7 @@
                                     <div class="card-body">
 
                                         <p class="card-text" style="overflow-wrap:break-word ">{{$commission->artDesc}}</p>
-                                        <p>Request by: {{\App\Users::find($commission->User_id)->Firstname}}
+                                        <p>Request by: {{\App\Users::find($commission->user_id)->Firstname}}
                                         </p>
                                         <p>Date Posted: <b>{{$commission->created_at}}</b></p>
 
@@ -47,7 +47,7 @@
                                             </p>
 
                                         @endif
-                                        @if($commission->User_id != session('user')['id'] && $commission->status == 1)
+                                        @if($commission->user_id != session('user')['id'] && $commission->status == 1)
                                             <form action="{{url('/commissions/accept')}}" method="post">
                                                 @csrf
                                                 <input type="hidden" name="id" value="{{$commission->id}}">
@@ -57,17 +57,17 @@
                                             </form>
                                         @endif
                                         {{--<a href="#" class="btn btn-primary">Go somewhere</a>--}}
-                                        @if($commission->User_id == session('user')['id'])
+                                        @if($commission->user_id == session('user')['id'])
                                             <a class="btn btn-round btn-primary"
                                                href="{{url('commissions', $commission->id)}}">Edit</a>
                                             @if($commission->accepted_by)
                                                 <a class="btn btn-round btn-info"
-                                                   href="{{url('message/'.$commission->id.'/'.$commission->accepted_by.'/'.$commission->User_id)}}">Message</a>
+                                                   href="{{url('message/'.$commission->id.'/'.$commission->accepted_by.'/'.$commission->user_id)}}">Message</a>
                                             @endif
                                         @endif
                                         @if($commission->accepted_by == session('user')['id'])
                                             <a class="btn btn-round btn-info"
-                                               href="{{url('message/'.$commission->id.'/'.$commission->User_id.'/'.$commission->accepted_by)}}">Message</a>
+                                               href="{{url('message/'.$commission->id.'/'.$commission->user_id.'/'.$commission->accepted_by)}}">Message</a>
                                         @endif
                                     </div>
                                 </div>

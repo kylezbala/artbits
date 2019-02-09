@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Auditlog;
 use App\Commission;
 use App\User;
 use Illuminate\Http\Request;
@@ -27,6 +28,12 @@ class CommissionController extends Controller
         $commission->accepted_by = session('user')['id'];
         $commission->status = 0;
         $commission->save();
+
+        //Audit log
+        $audit = new Auditlog();
+        $audit->user_id = session('user')['id'];
+        $audit->activity = 'User has accepted an art commission';
+        $audit->save();
         return redirect()->back();
     }
 
@@ -37,6 +44,7 @@ class CommissionController extends Controller
      */
     public function create()
     {
+
 
 
         return view('commission.commissioncreate');
@@ -55,6 +63,11 @@ class CommissionController extends Controller
             'artTitle' => 'required|max:100|min:5',
             'artDesc' => 'required|max:500'
         ]);
+        //Audit log
+        $audit = new Auditlog();
+        $audit->user_id = session('user')['id'];
+        $audit->activity = 'User has created an art request';
+        $audit->save();
 
         $commission = $request->all();
         $commission['status'] = 1;
@@ -101,6 +114,12 @@ class CommissionController extends Controller
         $commission->artDesc = $request['artDesc'];
 
         $commission->save();
+
+        //Audit log
+        $audit = new Auditlog();
+        $audit->user_id = session('user')['id'];
+        $audit->activity = 'User has updated an art request';
+        $audit->save();
 
         return redirect('/commissions');
     }

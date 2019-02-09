@@ -34,13 +34,14 @@
                                 <h5 class="card-title">{{$event->eventName}}</h5>
                             </div>
                                 <p class="card-text">{{$event->eventDescription}}</p>
-                                <p>Event Date: <b>{{$event->eventDate}}</b></p>
+                                <p>Event Start: <b>{{\Carbon\Carbon::parse($event->eventStart)->format('F d, Y - h:m')}}</b></p>
+                                <p>Event End: <b>{{\Carbon\Carbon::parse($event->eventEnd)->format('F d, Y - h:m')}}</b></p>
                                 <p>Date Posted: <b>{{$event->created_at}}</b></p>
 
                                 {{--<a href="#" class="btn btn-primary">Go somewhere</a>--}}
                             </div>
 
-                            @if($event->User_id == session('user')['id'])
+                            @if($event->user_id == session('user')['id'])
                                 <div class="card-footer pull-right">
                                     <a class="btn btn-round btn-primary" href="{{url('/events', $event->id)}}">Edit</a>
                                 </div>
